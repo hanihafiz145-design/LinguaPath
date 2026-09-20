@@ -28,6 +28,22 @@ jobs:
       - name: Set up Gradle
         uses: gradle/actions/setup-gradle@v4
 
+      - name: Fix JVM targets
+        working-directory: LinguaPath/app
+        run: |
+          cat >> build.gradle <<'EOF'
+
+          android {
+              compileOptions {
+                  sourceCompatibility JavaVersion.VERSION_17
+                  targetCompatibility JavaVersion.VERSION_17
+              }
+              kotlinOptions {
+                  jvmTarget = '17'
+              }
+          }
+          EOF
+
       - name: Build APK
         working-directory: LinguaPath
         run: gradle assembleDebug
