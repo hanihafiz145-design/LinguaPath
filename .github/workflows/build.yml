@@ -35,7 +35,6 @@ jobs:
               tasks.withType(JavaCompile).configureEach {
                   sourceCompatibility = "17"
                   targetCompatibility = "17"
-                  options.release = 17
               }
           }
           EOF
@@ -46,4 +45,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: LinguaPath-debug-apk
-          path: LinguaPath/app/build/outputs/apk/debug/app-debug.apk
+          path: app/build/outputs/apk/debug/app-debug.apk
